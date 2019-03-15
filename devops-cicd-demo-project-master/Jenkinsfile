@@ -3,6 +3,14 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    log.info 'checkout'
+                }
+                git credentialsId: 'GIT', url: 'https://github.com/smauerer/myRep.git'
+            }
+        }
         stage('Build') {
             steps {
                 script {
